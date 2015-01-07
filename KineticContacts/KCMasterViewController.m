@@ -111,7 +111,7 @@ const u_int RANDOMUSER_COUNT = 100;
 - (void)didGetRandomUserResults:(NSArray*)results
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(dismissLoadingAlert) withObject:nil waitUntilDone:NO];
    _results = results;
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
@@ -119,14 +119,14 @@ const u_int RANDOMUSER_COUNT = 100;
 - (void)failedGetRandomUserResponseWithError:(NSError*)error;
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(dismissLoadingAlert) withObject:nil waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(showError:) withObject:error.localizedDescription waitUntilDone:NO];
 }
 
 - (void)failedGetRandomUserResponseWithApiError:(NSString*)error
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(dismissLoadingAlert) withObject:nil waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(showError:) withObject:error waitUntilDone:NO];
 }
 
