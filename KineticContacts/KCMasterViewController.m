@@ -75,6 +75,7 @@ const u_int RANDOMUSER_COUNT = 100;
         cell.thumbnailView.image = thumbnail;
     }
     else {
+        cell.thumbnailView.image = nil;
         [[KCImageCache sharedInstance] loadImageForUrl:result.user.picture.thumbnailPictureUrl];
     }
     return cell;
