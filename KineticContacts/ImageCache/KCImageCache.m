@@ -45,15 +45,17 @@ static KCImageCache *_sharedInstance = nil;
 {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        if( data ) {
-            UIImage *image = [UIImage imageWithData:data];
-            if( image ) {
-                [_images setObject:image forKey:url];
-                if( self.delegate ) {
-                    [self.delegate loadedImage:image forUrl:url];
+        @autoreleasepool {
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            if( data ) {
+                UIImage *image = [UIImage imageWithData:data];
+                if( image ) {
+                    [_images setObject:image forKey:url];
+                    if( self.delegate ) {
+                        [self.delegate loadedImage:image forUrl:url];
+                    }
                 }
-             }
+            }
         }
     });
     

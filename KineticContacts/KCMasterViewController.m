@@ -11,7 +11,7 @@
 #import "KCRandomUserCell.h"
 #import "KCImageCache.h"
 
-const u_int RANDOMUSER_COUNT = 50;
+const u_int RANDOMUSER_COUNT = 100;
 
 @interface KCMasterViewController () {
     NSArray *_results;
@@ -107,10 +107,7 @@ const u_int RANDOMUSER_COUNT = 50;
 - (void)didGetRandomUserResults:(NSArray*)results
 {
     _results = results;
-    
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [self.tableView reloadData];
-    });
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)failedGetRandomUserResponseWithError:(NSError*)error;
