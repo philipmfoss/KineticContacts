@@ -1,0 +1,9 @@
+"name_format"="%@, %@";
+"detailed_name_format"="%@ %@ %@";
+"address_format"="%@\n%@\n%@\n%@";
+"phone_format"="PHONE %@\n";
+"cell_format"="CELL %@\n";
+"email_format"="EMAIL %@\n";
+"server_error"="Server Error";
+"ok"="OK";
+
