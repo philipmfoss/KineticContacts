@@ -15,6 +15,7 @@ const u_int RANDOMUSER_COUNT = 100;
 
 @interface KCMasterViewController () {
     NSArray *_results;
+    UIAlertView *_loadingAlert;
 }
 @end
 
@@ -38,6 +39,8 @@ const u_int RANDOMUSER_COUNT = 100;
     [KCImageCache sharedInstance].delegate = self;
 
     _results = [[NSArray alloc]init];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self showLoadingAlert];
     [[[RUApi alloc]init] getRandomUsers:RANDOMUSER_COUNT withDelegate:self];
 }
 
@@ -107,17 +110,23 @@ const u_int RANDOMUSER_COUNT = 100;
 
 - (void)didGetRandomUserResults:(NSArray*)results
 {
-    _results = results;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
+   _results = results;
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)failedGetRandomUserResponseWithError:(NSError*)error;
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(showError:) withObject:error.localizedDescription waitUntilDone:NO];
 }
 
 - (void)failedGetRandomUserResponseWithApiError:(NSString*)error
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self performSelectorOnMainThread:@selector(dismissMegaAnnoyingPopup) withObject:nil waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(showError:) withObject:error waitUntilDone:NO];
 }
 
@@ -151,6 +160,30 @@ const u_int RANDOMUSER_COUNT = 100;
 {
     return [[[word substringToIndex:1] uppercaseString] stringByAppendingString:[word substringFromIndex:1]];
     
+}
+
+#pragma mark - Loading Alsert
+-(void)showLoadingAlert
+{
+    _loadingAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"loading", nil)
+                                                 message:nil delegate:self cancelButtonTitle:nil
+                                       otherButtonTitles: nil];
+    
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]
+                                          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    indicator.center = CGPointMake(_loadingAlert.bounds.size.width / 2,
+                                   _loadingAlert.bounds.size.height - 45);
+    [indicator startAnimating];
+    [_loadingAlert addSubview:indicator];
+    [_loadingAlert show];
+}
+
+-(void)dismissLoadingAlert
+{
+    [_loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    _loadingAlert = nil;
 }
 
 

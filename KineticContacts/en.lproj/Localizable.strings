@@ -6,4 +6,5 @@
 "email_format"="EMAIL %@\n";
 "server_error"="Server Error";
 "ok"="OK";
+"loading"="Retrieving contacts...";
 
