@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "KCImageCacheDelegate.h"
+#import "KCImageCacheTaskDelegate.h"
 
-@interface KCImageCache : NSObject
+@interface KCImageCache : NSObject <KCImageCacheTaskDelegate>
 
 + (KCImageCache*)sharedInstance;
 
 - (UIImage*)getImageForUrl:(NSURL*)url;
+- (void)setImage:(UIImage*)image forUrl:(NSURL*)url;
 - (void)loadImageForUrl:(NSURL*)url;
 - (void)clear;
 
