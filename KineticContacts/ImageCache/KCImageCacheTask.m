@@ -40,8 +40,6 @@
                     }
                 }
             }
-            
-            [NSThread sleepForTimeInterval:1.0];
         }
     }
 }
