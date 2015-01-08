@@ -6,7 +6,8 @@
 
 @interface KCImageCache () {
     NSMutableDictionary *_images;
-    NSMutableDictionary *_downloadQueue;
+    NSMutableArray *_downloadQueue;
+    dispatch_queue_t _queue;;
 }
 @end
 
@@ -29,7 +30,9 @@ static KCImageCache *_sharedInstance = nil;
 {
     if( self = [super init]) {
         _images = [[NSMutableDictionary alloc]init];
-        _downloadQueue = [[NSMutableDictionary alloc]init];
+        _downloadQueue = [[NSMutableArray alloc]init];
+        _queue = dispatch_queue_create("KCImageCacheQueue", NULL);
+        
     }
     return self;
 }
@@ -54,23 +57,18 @@ static KCImageCache *_sharedInstance = nil;
 {
     @synchronized(self)
     {
-        KCImageCacheTask *task = [_downloadQueue objectForKey:url];
-        if( task ) {
+        
+        if( [_downloadQueue containsObject:url] ) {
             return;
         }
         
-        task = [[KCImageCacheTask alloc]initWithUrl:url];
+        KCImageCacheTask *task = [[KCImageCacheTask alloc]initWithUrl:url];
         task.delegate = self;
-        [_downloadQueue setObject:task forKey:url];
-    
-        __block NSDictionary *queueSnapshot = [NSDictionary dictionaryWithDictionary:_downloadQueue];
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_downloadQueue addObject:url];
+        
+        dispatch_async(_queue, ^{
             @autoreleasepool {
-                for( NSURL *key in queueSnapshot ) {
-                    KCImageCacheTask *task = [queueSnapshot objectForKey:key];
-                    [task execute];
-                }
+                [task execute];
             }
         });
     }
@@ -89,7 +87,7 @@ static KCImageCache *_sharedInstance = nil;
 {
     @synchronized(self)
     {
-        [_downloadQueue removeObjectForKey:url];
+        [_downloadQueue removeObject:url];
     }
     
     [self setImage:image forUrl:url];
