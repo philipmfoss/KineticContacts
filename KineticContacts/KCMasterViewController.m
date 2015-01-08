@@ -12,6 +12,9 @@ const u_int RANDOMUSER_COUNT = 100;
 @interface KCMasterViewController () {
     NSArray *_results;
     UIAlertView *_loadingAlert;
+    // use two image caches here since they should not share images
+    KCImageCache *_thumbnailcache;
+    KCImageCache *_portraitCache;
 }
 @end
 
@@ -32,7 +35,10 @@ const u_int RANDOMUSER_COUNT = 100;
 
     self.detailViewController = (KCDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    [KCImageCache sharedInstance].delegate = self;
+    _thumbnailcache = [[KCImageCache alloc]init];
+    _thumbnailcache.delegate = self;
+
+    _portraitCache = [[KCImageCache alloc]init];
 
     _results = [[NSArray alloc]init];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -43,7 +49,8 @@ const u_int RANDOMUSER_COUNT = 100;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    [[KCImageCache sharedInstance] clear];
+    [_thumbnailcache clear];
+    [_portraitCache clear];
 }
 
 #pragma mark - Table View
@@ -69,13 +76,13 @@ const u_int RANDOMUSER_COUNT = 100;
     NSString *name = [NSString stringWithFormat:NSLocalizedString(@"name_format", nil), capitalizedLastName, capitalizedFirstName];
     cell.name.text = name;
     
-    UIImage *thumbnail = [[KCImageCache sharedInstance] getImageForUrl:result.user.picture.thumbnailPictureUrl];
+    UIImage *thumbnail = [_thumbnailcache getImageForUrl:result.user.picture.thumbnailPictureUrl];
     if( thumbnail ) {
         cell.thumbnailView.image = thumbnail;
     }
     else {
         cell.thumbnailView.image = nil;
-        [[KCImageCache sharedInstance] loadImageForUrl:result.user.picture.thumbnailPictureUrl];
+        [_thumbnailcache loadImageForUrl:result.user.picture.thumbnailPictureUrl];
     }
     return cell;
 }
@@ -98,7 +105,10 @@ const u_int RANDOMUSER_COUNT = 100;
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         RUResult *object = _results[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        KCDetailViewController *controller = (KCDetailViewController*)[segue destinationViewController];
+        [controller setDetailItem:object];
+        controller.imagecache = _portraitCache;
+        _portraitCache.delegate = controller;
     }
 }
 

@@ -6,6 +6,7 @@
 #import "KCImageCacheDelegate.h"
 
 @class RUResult;
+@class KCImageCache;
 
 @interface KCDetailViewController : UIViewController <KCImageCacheDelegate>
 
@@ -15,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *addressinfo;
 @property (weak, nonatomic) IBOutlet UILabel *contactinfo;
+@property (nonatomic) KCImageCache *imagecache;
 
 @end

@@ -17,6 +17,8 @@
 
 @implementation KCDetailViewController
 
+@synthesize imagecache;
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -56,12 +58,12 @@
         }
         self.contactinfo.text = formattedcontactinfo;
 
-        UIImage *thumbnail = [[KCImageCache sharedInstance] getImageForUrl:self.detailItem.user.picture.largePictureUrl];
+        UIImage *thumbnail = [self.imagecache getImageForUrl:self.detailItem.user.picture.largePictureUrl];
         if( thumbnail ) {
             self.picture.image = thumbnail;
         }
         else {
-            [[KCImageCache sharedInstance] loadImageForUrl:self.detailItem.user.picture.largePictureUrl];
+            [self.imagecache loadImageForUrl:self.detailItem.user.picture.largePictureUrl];
         }
         
     }
@@ -70,14 +72,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[KCImageCache sharedInstance].delegate = self;
     [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    [[KCImageCache sharedInstance] clear];
+    [self.imagecache clear];
 }
 
 #pragma mark - KCImageCacheDelegate

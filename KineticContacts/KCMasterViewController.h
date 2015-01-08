@@ -12,6 +12,6 @@
 
 + (NSString*)capitalize:(NSString*)word;
 
-@property (strong, nonatomic) KCDetailViewController *detailViewController;
+@property (nonatomic) KCDetailViewController *detailViewController;
 
 @end

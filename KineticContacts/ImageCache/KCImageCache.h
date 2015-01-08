@@ -6,8 +6,6 @@
 
 @interface KCImageCache : NSObject
 
-+ (KCImageCache*)sharedInstance;
-
 // If this returns nil, call loadImageForUrl and wait for the delegate, then call this again.
 - (UIImage*)getImageForUrl:(NSURL*)url;
 

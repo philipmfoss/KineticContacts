@@ -10,20 +10,9 @@
 }
 @end
 
-static KCImageCache *_sharedInstance = nil;
-
 @implementation KCImageCache
 
 @synthesize delegate;
-
-+ (KCImageCache*)sharedInstance
-{
-    if( !_sharedInstance ) {
-        _sharedInstance = [[KCImageCache alloc]init];
-    }
-    
-    return _sharedInstance;
-}
 
 - (id)init
 {
@@ -81,6 +70,7 @@ static KCImageCache *_sharedInstance = nil;
 {
     [_images removeAllObjects];
     [_downloadQueue removeAllObjects];
+    _queue = nil;
 }
 
 #pragma mark - Internal
