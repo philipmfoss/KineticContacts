@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D41CB9F01A5D2E160083810A /* KCImageCacheTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D41CB9EF1A5D2E160083810A /* KCImageCacheTask.m */; };
 		D42F31D51A5C9C8D0042ECD4 /* KCTestURLWithNoSeed.m in Sources */ = {isa = PBXBuildFile; fileRef = D42F31D41A5C9C8D0042ECD4 /* KCTestURLWithNoSeed.m */; };
 		D42F31DB1A5CA9180042ECD4 /* KCTestInvalidRandomUserJson.m in Sources */ = {isa = PBXBuildFile; fileRef = D42F31DA1A5CA9180042ECD4 /* KCTestInvalidRandomUserJson.m */; };
 		D42F31DD1A5CABAB0042ECD4 /* KCTestValidResponseNoError.m in Sources */ = {isa = PBXBuildFile; fileRef = D42F31DC1A5CABAB0042ECD4 /* KCTestValidResponseNoError.m */; };
@@ -54,9 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D41CB9EE1A5D2E160083810A /* KCImageCacheTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCImageCacheTask.h; sourceTree = "<group>"; };
-		D41CB9EF1A5D2E160083810A /* KCImageCacheTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCImageCacheTask.m; sourceTree = "<group>"; };
-		D41CB9F11A5D30950083810A /* KCImageCacheTaskDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCImageCacheTaskDelegate.h; sourceTree = "<group>"; };
 		D42F31D41A5C9C8D0042ECD4 /* KCTestURLWithNoSeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCTestURLWithNoSeed.m; sourceTree = "<group>"; };
 		D42F31DA1A5CA9180042ECD4 /* KCTestInvalidRandomUserJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCTestInvalidRandomUserJson.m; sourceTree = "<group>"; };
 		D42F31DC1A5CABAB0042ECD4 /* KCTestValidResponseNoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCTestValidResponseNoError.m; sourceTree = "<group>"; };
@@ -141,9 +137,6 @@
 				D47FDB341A5C6F7C00939EBC /* KCImageCache.h */,
 				D47FDB351A5C6F7C00939EBC /* KCImageCache.m */,
 				D47FDB361A5C6F7C00939EBC /* KCImageCacheDelegate.h */,
-				D41CB9EE1A5D2E160083810A /* KCImageCacheTask.h */,
-				D41CB9EF1A5D2E160083810A /* KCImageCacheTask.m */,
-				D41CB9F11A5D30950083810A /* KCImageCacheTaskDelegate.h */,
 			);
 			name = ImageCache;
 			path = KineticContacts/ImageCache;
@@ -376,7 +369,6 @@
 				D4CF0C051A5B4B1100AB3534 /* KCDetailViewController.m in Sources */,
 				D47FDB371A5C6F7C00939EBC /* KCImageCache.m in Sources */,
 				D4CF0C901A5BADCB00AB3534 /* RUJsonParser.m in Sources */,
-				D41CB9F01A5D2E160083810A /* KCImageCacheTask.m in Sources */,
 				D45DB85D1A5BFA1500E3E9DB /* KCRandomUserCell.m in Sources */,
 				D4CF0C931A5BADCB00AB3534 /* RUPicture.m in Sources */,
 			);

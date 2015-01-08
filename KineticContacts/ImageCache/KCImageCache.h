@@ -3,9 +3,8 @@
 
 #import <Foundation/Foundation.h>
 #import "KCImageCacheDelegate.h"
-#import "KCImageCacheTaskDelegate.h"
 
-@interface KCImageCache : NSObject <KCImageCacheTaskDelegate>
+@interface KCImageCache : NSObject
 
 + (KCImageCache*)sharedInstance;
 

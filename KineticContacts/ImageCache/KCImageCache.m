@@ -2,7 +2,6 @@
 //  Created by Philip Foss on 2015-01-06.
 
 #import "KCImageCache.h"
-#import "KCImageCacheTask.h"
 
 @interface KCImageCache () {
     NSMutableDictionary *_images;
@@ -55,23 +54,26 @@ static KCImageCache *_sharedInstance = nil;
 
 - (void)loadImageForUrl:(NSURL*)url
 {
-    @synchronized(self)
-    {
-        
-        if( [_downloadQueue containsObject:url] ) {
-            return;
-        }
-        
-        KCImageCacheTask *task = [[KCImageCacheTask alloc]initWithUrl:url];
-        task.delegate = self;
-        [_downloadQueue addObject:url];
-        
-        dispatch_async(_queue, ^{
-            @autoreleasepool {
-                [task execute];
-            }
-        });
+    if( [self isUrlQueued:url] ) {
+        return;
     }
+    
+    [_downloadQueue addObject:url];
+    
+    dispatch_async(_queue, ^{
+        @autoreleasepool {
+            if( ![self isUrlQueued:url] ) {
+                return;
+            }
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            if( data ) {
+                UIImage *image = [UIImage imageWithData:data];
+                if( image ) {
+                    [self loadedImage:image forUrl:url];
+                }
+            }
+        }
+    });
     
 }
 
@@ -81,7 +83,14 @@ static KCImageCache *_sharedInstance = nil;
     [_downloadQueue removeAllObjects];
 }
 
-#pragma mark - KCImageCacheTaskDelegate
+#pragma mark - Internal
+
+- (BOOL)isUrlQueued:(NSURL*)url
+{
+    @synchronized(self) {
+        return [_downloadQueue containsObject:url];
+    }
+}
 
 - (void) loadedImage:(UIImage*)image forUrl:(NSURL*)url
 {
