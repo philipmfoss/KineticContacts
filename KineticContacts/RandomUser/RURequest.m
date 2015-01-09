@@ -2,18 +2,18 @@
 //  Created by Philip Foss on 2015-01-06.
 
 
-#import "RUURL.h"
+#import "RURequest.h"
 #import "RUJsonParser.h"
 
 const NSString *RANDOMUSER_DOMAIN = @"http://api.randomuser.me";
 
-@interface RUURL()
+@interface RURequest()
 @property (nonatomic,readwrite) NSInteger result;
 @property (nonatomic,readwrite) NSString *seed;
 @property (nonatomic,readwrite) RUGender gender;
 @end
 
-@implementation RUURL
+@implementation RURequest
 
 - (id)initWithResults:(NSInteger)result
 {

@@ -14,6 +14,7 @@
 - (void)loadImageForUrl:(NSURL*)url;
 
 // Clears the cached images.
+// Cancels all downloads.
 // Call this on low memory conditions.
 - (void)clear;
 

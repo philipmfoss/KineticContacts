@@ -32,14 +32,15 @@
 		D4CF0C0F1A5B4B1200AB3534 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF0BE81A5B4B1100AB3534 /* Foundation.framework */; };
 		D4CF0C101A5B4B1200AB3534 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF0BEC1A5B4B1100AB3534 /* UIKit.framework */; };
 		D4CF0C181A5B4B1200AB3534 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4CF0C161A5B4B1200AB3534 /* InfoPlist.strings */; };
-		D4CF0C8F1A5BADCB00AB3534 /* RUApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C7E1A5BADCB00AB3534 /* RUApi.m */; };
+		D4CF0C8F1A5BADCB00AB3534 /* RUResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C7E1A5BADCB00AB3534 /* RUResponse.m */; };
 		D4CF0C901A5BADCB00AB3534 /* RUJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C821A5BADCB00AB3534 /* RUJsonParser.m */; };
 		D4CF0C911A5BADCB00AB3534 /* RULocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C841A5BADCB00AB3534 /* RULocation.m */; };
 		D4CF0C921A5BADCB00AB3534 /* RUName.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C861A5BADCB00AB3534 /* RUName.m */; };
 		D4CF0C931A5BADCB00AB3534 /* RUPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C881A5BADCB00AB3534 /* RUPicture.m */; };
 		D4CF0C941A5BADCB00AB3534 /* RUResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C8A1A5BADCB00AB3534 /* RUResult.m */; };
-		D4CF0C951A5BADCB00AB3534 /* RUURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C8C1A5BADCB00AB3534 /* RUURL.m */; };
+		D4CF0C951A5BADCB00AB3534 /* RURequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C8C1A5BADCB00AB3534 /* RURequest.m */; };
 		D4CF0C961A5BADCB00AB3534 /* RUUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CF0C8E1A5BADCB00AB3534 /* RUUser.m */; };
+		D4FAC4971A5F369D0026CE88 /* RUApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAC4961A5F369D0026CE88 /* RUApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,8 +89,8 @@
 		D4CF0C0D1A5B4B1200AB3534 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D4CF0C151A5B4B1200AB3534 /* KineticContactsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KineticContactsTests-Info.plist"; sourceTree = "<group>"; };
 		D4CF0C171A5B4B1200AB3534 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4CF0C7D1A5BADCB00AB3534 /* RUApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUApi.h; sourceTree = "<group>"; };
-		D4CF0C7E1A5BADCB00AB3534 /* RUApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUApi.m; sourceTree = "<group>"; };
+		D4CF0C7D1A5BADCB00AB3534 /* RUResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUResponse.h; sourceTree = "<group>"; };
+		D4CF0C7E1A5BADCB00AB3534 /* RUResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUResponse.m; sourceTree = "<group>"; };
 		D4CF0C7F1A5BADCB00AB3534 /* RUApiDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUApiDelegate.h; sourceTree = "<group>"; };
 		D4CF0C811A5BADCB00AB3534 /* RUJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUJsonParser.h; sourceTree = "<group>"; };
 		D4CF0C821A5BADCB00AB3534 /* RUJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUJsonParser.m; sourceTree = "<group>"; };
@@ -101,10 +102,12 @@
 		D4CF0C881A5BADCB00AB3534 /* RUPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUPicture.m; sourceTree = "<group>"; };
 		D4CF0C891A5BADCB00AB3534 /* RUResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUResult.h; sourceTree = "<group>"; };
 		D4CF0C8A1A5BADCB00AB3534 /* RUResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUResult.m; sourceTree = "<group>"; };
-		D4CF0C8B1A5BADCB00AB3534 /* RUURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUURL.h; sourceTree = "<group>"; };
-		D4CF0C8C1A5BADCB00AB3534 /* RUURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUURL.m; sourceTree = "<group>"; };
+		D4CF0C8B1A5BADCB00AB3534 /* RURequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RURequest.h; sourceTree = "<group>"; };
+		D4CF0C8C1A5BADCB00AB3534 /* RURequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RURequest.m; sourceTree = "<group>"; };
 		D4CF0C8D1A5BADCB00AB3534 /* RUUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUUser.h; sourceTree = "<group>"; };
 		D4CF0C8E1A5BADCB00AB3534 /* RUUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUUser.m; sourceTree = "<group>"; };
+		D4FAC4951A5F369D0026CE88 /* RUApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUApi.h; sourceTree = "<group>"; };
+		D4FAC4961A5F369D0026CE88 /* RUApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,8 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				D47FDB411A5C900500939EBC /* RUGender.h */,
-				D4CF0C7D1A5BADCB00AB3534 /* RUApi.h */,
-				D4CF0C7E1A5BADCB00AB3534 /* RUApi.m */,
+				D4CF0C7D1A5BADCB00AB3534 /* RUResponse.h */,
+				D4CF0C7E1A5BADCB00AB3534 /* RUResponse.m */,
 				D4CF0C7F1A5BADCB00AB3534 /* RUApiDelegate.h */,
 				D4CF0C811A5BADCB00AB3534 /* RUJsonParser.h */,
 				D4CF0C821A5BADCB00AB3534 /* RUJsonParser.m */,
@@ -246,10 +249,12 @@
 				D4CF0C881A5BADCB00AB3534 /* RUPicture.m */,
 				D4CF0C891A5BADCB00AB3534 /* RUResult.h */,
 				D4CF0C8A1A5BADCB00AB3534 /* RUResult.m */,
-				D4CF0C8B1A5BADCB00AB3534 /* RUURL.h */,
-				D4CF0C8C1A5BADCB00AB3534 /* RUURL.m */,
+				D4CF0C8B1A5BADCB00AB3534 /* RURequest.h */,
+				D4CF0C8C1A5BADCB00AB3534 /* RURequest.m */,
 				D4CF0C8D1A5BADCB00AB3534 /* RUUser.h */,
 				D4CF0C8E1A5BADCB00AB3534 /* RUUser.m */,
+				D4FAC4951A5F369D0026CE88 /* RUApi.h */,
+				D4FAC4961A5F369D0026CE88 /* RUApi.m */,
 			);
 			name = RandomUser;
 			path = KineticContacts/RandomUser;
@@ -357,10 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4CF0C8F1A5BADCB00AB3534 /* RUApi.m in Sources */,
+				D4FAC4971A5F369D0026CE88 /* RUApi.m in Sources */,
+				D4CF0C8F1A5BADCB00AB3534 /* RUResponse.m in Sources */,
 				D4CF0C961A5BADCB00AB3534 /* RUUser.m in Sources */,
 				D4CF0C941A5BADCB00AB3534 /* RUResult.m in Sources */,
-				D4CF0C951A5BADCB00AB3534 /* RUURL.m in Sources */,
+				D4CF0C951A5BADCB00AB3534 /* RURequest.m in Sources */,
 				D4CF0C911A5BADCB00AB3534 /* RULocation.m in Sources */,
 				D4CF0BF91A5B4B1100AB3534 /* KCAppDelegate.m in Sources */,
 				D4CF0C921A5BADCB00AB3534 /* RUName.m in Sources */,

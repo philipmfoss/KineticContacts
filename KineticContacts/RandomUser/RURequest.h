@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 #import "RUGender.h"
 
-@interface RUURL : NSObject
+@interface RURequest : NSObject
 
 - (id)initWithResults:(NSInteger)result;
 - (id)initWithSeed:(NSString*)seed withGender:(RUGender)gender withResult:(NSInteger)result;

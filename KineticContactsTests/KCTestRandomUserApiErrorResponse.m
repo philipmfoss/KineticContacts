@@ -23,7 +23,7 @@
 - (void)setUp
 {
     [super setUp];
-    NSString *json = @"{\"error\":\"Uh oh, something has gone wrong. Please tweet us @randomapi about the issue. Thank you.\"}";    RUApi *api = [[RUApi alloc]init];
+    NSString *json = @"{\"error\":\"Uh oh, something has gone wrong. Please tweet us @randomapi about the issue. Thank you.\"}";    RUResponse *api = [[RUResponse alloc]init];
     [api handleResponse:@"application/json" withData:[json dataUsingEncoding:NSUTF8StringEncoding] withError:nil withDelegate:self];
 }
 

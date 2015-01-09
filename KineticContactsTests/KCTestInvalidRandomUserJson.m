@@ -24,7 +24,7 @@
 {
     [super setUp];
     NSString *json = @"kjgwslfkvjgsldkvjgl";
-    RUApi *api = [[RUApi alloc]init];
+    RUResponse *api = [[RUResponse alloc]init];
     [api handleResponse:@"application/json" withData:[json dataUsingEncoding:NSUTF8StringEncoding] withError:nil withDelegate:self];
 }
 

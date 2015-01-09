@@ -6,6 +6,7 @@
 #import "KCDetailViewController.h"
 #import "KCRandomUserCell.h"
 #import "KCImageCache.h"
+#import "RUApi.h"
 
 const u_int RANDOMUSER_COUNT = 100;
 

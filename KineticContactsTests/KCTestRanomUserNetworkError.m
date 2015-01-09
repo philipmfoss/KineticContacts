@@ -22,7 +22,7 @@
 - (void)setUp
 {
     [super setUp];
-    RUApi *api = [[RUApi alloc]init];
+    RUResponse *api = [[RUResponse alloc]init];
     NSError *error = [NSError errorWithDomain:@"api.randomuser.me" code:7658 userInfo:[[NSDictionary alloc]init]];
     [api handleResponse:@"application/text" withData:[@"" dataUsingEncoding:NSUTF8StringEncoding] withError:error withDelegate:self];
 }

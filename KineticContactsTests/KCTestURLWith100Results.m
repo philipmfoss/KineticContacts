@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "RUURL.h"
+#import "RUApi.h"
 
 @interface KCTestURLWith100Results : XCTestCase
 {
-    RUURL *url;
+    RURequest *url;
 }
 
 @end
@@ -21,7 +21,7 @@
 - (void)setUp
 {
     [super setUp];
-    url = [[RUURL alloc]initWithResults:100];
+    url = [[RURequest alloc]initWithResults:100];
 }
 
 - (void)tearDown
