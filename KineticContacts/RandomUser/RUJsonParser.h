@@ -3,7 +3,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import "RUApiDelegate.h"
 
 @interface RUJsonParser : NSObject
 
